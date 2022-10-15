@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0665690B64B73D18E1D27A73 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A521C3389D479278E1A857F /* Pods_Instagram.framework */; };
-		6958EBA428F872B50051BA8F /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958EBA328F872B50051BA8F /* CustomViewController.swift */; };
+		6958EBA428F872B50051BA8F /* UIViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6958EBA328F872B50051BA8F /* UIViewExtention.swift */; };
 		69B07C5428F7EE27003EEA54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B07C5328F7EE27003EEA54 /* AppDelegate.swift */; };
 		69B07C5628F7EE27003EEA54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B07C5528F7EE27003EEA54 /* SceneDelegate.swift */; };
-		69B07C5828F7EE27003EEA54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B07C5728F7EE27003EEA54 /* ViewController.swift */; };
+		69B07C5828F7EE27003EEA54 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B07C5728F7EE27003EEA54 /* LoginViewController.swift */; };
 		69B07C5B28F7EE27003EEA54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69B07C5928F7EE27003EEA54 /* Main.storyboard */; };
 		69B07C5D28F7EE29003EEA54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69B07C5C28F7EE29003EEA54 /* Assets.xcassets */; };
 		69B07C6028F7EE29003EEA54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69B07C5E28F7EE29003EEA54 /* LaunchScreen.storyboard */; };
@@ -20,11 +20,11 @@
 /* Begin PBXFileReference section */
 		2061D48457E4CB853D1A0EE5 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		4A521C3389D479278E1A857F /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6958EBA328F872B50051BA8F /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		6958EBA328F872B50051BA8F /* UIViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtention.swift; sourceTree = "<group>"; };
 		69B07C5028F7EE27003EEA54 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69B07C5328F7EE27003EEA54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69B07C5528F7EE27003EEA54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		69B07C5728F7EE27003EEA54 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		69B07C5728F7EE27003EEA54 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		69B07C5A28F7EE27003EEA54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		69B07C5C28F7EE29003EEA54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69B07C5F28F7EE29003EEA54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 		6958EBA228F8726F0051BA8F /* styles */ = {
 			isa = PBXGroup;
 			children = (
-				6958EBA328F872B50051BA8F /* CustomViewController.swift */,
+				6958EBA328F872B50051BA8F /* UIViewExtention.swift */,
 			);
 			path = styles;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 				6958EBA228F8726F0051BA8F /* styles */,
 				69B07C5328F7EE27003EEA54 /* AppDelegate.swift */,
 				69B07C5528F7EE27003EEA54 /* SceneDelegate.swift */,
-				69B07C5728F7EE27003EEA54 /* ViewController.swift */,
+				69B07C5728F7EE27003EEA54 /* LoginViewController.swift */,
 				69B07C5928F7EE27003EEA54 /* Main.storyboard */,
 				69B07C5C28F7EE29003EEA54 /* Assets.xcassets */,
 				69B07C5E28F7EE29003EEA54 /* LaunchScreen.storyboard */,
@@ -217,10 +217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69B07C5828F7EE27003EEA54 /* ViewController.swift in Sources */,
+				69B07C5828F7EE27003EEA54 /* LoginViewController.swift in Sources */,
 				69B07C5428F7EE27003EEA54 /* AppDelegate.swift in Sources */,
 				69B07C5628F7EE27003EEA54 /* SceneDelegate.swift in Sources */,
-				6958EBA428F872B50051BA8F /* CustomViewController.swift in Sources */,
+				6958EBA428F872B50051BA8F /* UIViewExtention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +374,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -403,6 +404,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
