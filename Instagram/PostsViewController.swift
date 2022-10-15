@@ -13,8 +13,13 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return posts.count
     }
     @objc func onRefresh() {
-        loadPosts()
+        loadPosts(with: 20)
        
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row+1 == posts.count{
+            loadPosts(with: posts.count+20)
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostTableViewCell
@@ -41,12 +46,12 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadPosts()
+        loadPosts(with: 20)
     }
-    func loadPosts(){
+    func loadPosts(with limit :Int){
         let query = PFQuery(className: "posts")
         query.includeKey("author")
-        query.limit = 20
+        query.limit = limit
         query.findObjectsInBackground{
             (posts,error) in
             if posts != nil{
