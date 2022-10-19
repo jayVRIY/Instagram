@@ -40,6 +40,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
+        
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             picker.sourceType = .camera
         }else{
@@ -50,7 +51,7 @@ class CameraViewController: UIViewController,UIImagePickerControllerDelegate, UI
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as! UIImage
-        let size  = CGSize(width: 300, height: 300)
+        let size  = CGSize(width: 1920, height: 1080)
         let scaledImage = image.af_imageScaled(to: size)
         imageView.image = nil
         postImage.image = image

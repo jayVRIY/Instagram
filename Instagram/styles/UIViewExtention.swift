@@ -32,4 +32,24 @@ import UIKit
             return UIColor(cgColor: color)
         }
     }
+    
+    @IBInspectable var shadowColor: UIColor? {
+        set {
+            guard let uiColor = newValue else { return }
+            layer.shadowColor = uiColor.cgColor
+        }
+        get {
+            guard let color = layer.shadowColor else { return nil }
+            return UIColor(cgColor: color)
+        }
+    }
+    
+    @IBInspectable var offsetValue: CGSize {
+        set{
+            layer.shadowOffset = offsetValue
+        }
+        get{
+            layer.shadowOffset
+        }
+    }
 }
