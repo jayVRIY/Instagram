@@ -10,11 +10,14 @@ import Parse
 class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var refreshControl: UIRefreshControl!
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        let post = posts[section]
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        
+        return comments.count+1
     }
     @objc func onRefresh() {
         loadPosts(with: 20)
-       
+        
     }
     @IBAction func onLogout(_ sender: Any) {
         PFUser.logOut()
@@ -22,28 +25,58 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let loginViewController = main.instantiateViewController(withIdentifier: "LoginViewController")
         guard let windowScene =  UIApplication.shared.connectedScenes.first as? UIWindowScene, let delegate = windowScene.delegate as? SceneDelegate else {return}
         delegate.window?.rootViewController = loginViewController
-
-    
+        
+        
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row+1 == posts.count{
             loadPosts(with: posts.count+20)
         }
     }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return posts.count
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostTableViewCell
         let post  = posts[indexPath.row]
+        let comments = (post["comments"] as? [PFObject]) ?? []
+        if indexPath.row == 0 {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as! PostTableViewCell
+      
         let user = post["author"] as! PFUser
-        cell.author.text = user.username
-        cell.postText.text = post["caption"] as! String
-            let imageFile = post["image"] as! PFFileObject
+        
+        let imageFile = post["image"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
         cell.postImage.af_setImage(withURL:url)
+        
         return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell" ) as! CommentTableViewCell
+            let comment = comments[indexPath.row-1]
+            cell.commentLabel.text = comment["text"] as! String
+            let user = comment["author"] as! PFUser
+            cell.nameLabel.text = user.username
+             return cell
+        }
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        let comment = PFObject(className: "Comments");
+        comment["text"] = "this is a comment"
+        comment["post"] = post
+        comment["author"]=PFUser.current()!
+        post.add(comment,forKey: "comments");
+        post.saveInBackground{
+            (success,error) in
+            if(success){
+                print("post success")
+            }else{
+                print(error?.localizedDescription)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tablView.delegate = self
@@ -59,7 +92,7 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     func loadPosts(with limit :Int){
         let query = PFQuery(className: "posts")
-        query.includeKey("author")
+        query.includeKeys(["author","comments","comments.author"])
         query.limit = limit
         query.findObjectsInBackground{
             (posts,error) in
@@ -74,13 +107,13 @@ class PostsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var posts = [PFObject]()
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

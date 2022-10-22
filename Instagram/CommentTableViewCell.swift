@@ -1,14 +1,16 @@
 //
-//  PostTableViewCell.swift
+//  CommentTableViewCell.swift
 //  Instagram
 //
-//  Created by Jay on 2022/10/15.
+//  Created by Jay on 2022/10/20.
 //
 
 import UIKit
 
-class PostTableViewCell: UITableViewCell {
-    @IBOutlet weak var postImage: UIImageView!
+class CommentTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,5 +21,5 @@ class PostTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }
